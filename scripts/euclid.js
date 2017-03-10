@@ -1,5 +1,7 @@
 (function (document, window) {
 	function euclid(a, b) {
+		a = Math.abs(a);
+		b = Math.abs(b);
 		if (a < b) {
 			var temp = a;
 			a = b;
@@ -30,6 +32,11 @@
 			evt.preventDefault();
 			var a = parseInt(input_value1.value);
 			var b = parseInt(input_value2.value);
+			
+			if (isNaN(a) || isNaN(b)){
+				return;
+			}
+			
 			var steps = euclid(a, b);
 			solution_elm.innerHTML = toHtml(steps);
 			mcd_elm.innerHTML = `GCD: ${steps[steps.length - 1]['b']}`;
